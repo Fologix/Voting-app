@@ -3,3 +3,25 @@ name: CI
 on:
   push:
     branches: [ main ]
+
+jobs: 
+  push_to_registry:
+   name: Push Docker image to Docker Hub
+   runs-on: unbuntu-latest
+   steps:
+    - name: Check out the repo
+      uses: actions/checkout@v3
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@dckr_pat_Xe83oF4QNNTYosCz2kHb5R5rh3o
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@dckr_pat_Xe83oF4QNNTYosCz2kHb5R5rh3o
+      with: 
+        context: .
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
