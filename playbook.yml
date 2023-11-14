@@ -7,7 +7,7 @@
     - name: Clone the voting app source code from GitHub
       git:
         repo: 'https://github.com/Fologix/Voting-app.git'
-        dest: /app
+        dest: /home/
         version: main  
 
     - name: Install dependencies from requirements.txt
