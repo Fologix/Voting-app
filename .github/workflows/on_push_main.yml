@@ -50,9 +50,6 @@ jobs:
       - name: Build Docker image with Packer
         run: packer build packer.pkr.hcl
 
-      - name: Build Docker image with Packer
-        run: packer build packer.pkr.hcl
-
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
         with:
@@ -60,7 +57,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Push image to Docker Hub
-        run: docker fologix/voting-app:tagname
+        run: docker push fologix/voting-app:tagname
           
   deploy-and-test:
     runs-on: ubuntu-latest
