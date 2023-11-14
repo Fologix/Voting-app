@@ -34,7 +34,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/voting-app
 
   build-and-push:
-    #needs: lint-and-security
+    #needs: lint-and-security #j'avais commencé une autre fonction mais je me suis perdu 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
