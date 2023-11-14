@@ -76,7 +76,7 @@ jobs:
 
     - name: Exécuter les tests unitaires
       run: 
-        pip install -e .
+        pip install app
         python pytest.py
       working-directory: ./
 
