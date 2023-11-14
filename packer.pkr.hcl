@@ -22,6 +22,6 @@ build {
     "source.docker.ubuntu"
   ]
   provisioner "ansible" {
-    playbook_file = "./playbook-exo.yml"
+    playbook_file = "./playbook.yml"
   }
 }
