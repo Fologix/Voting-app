@@ -75,7 +75,9 @@ jobs:
       run: pip install pytest flask
 
     - name: Exécuter les tests unitaires
-      run: python pytest.py
+      run: 
+        pip install -e .
+        python pytest.py
       working-directory: ./
 
     - name: Nettoyage
