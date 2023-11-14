@@ -1,16 +1,31 @@
-- hosts: servers
+---
+- name: Déploiement de l'application voting-app
+  hosts: vos_serveurs
   become: yes
+
   tasks:
-    - name: Install python for Ansible
+    - name: Assurer que Python est installé (bootstrap Python)
       raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
 
-    - name: Clone the voting app source code from GitHub
+    - name: Assurer que Git est installé
+      apt:
+        name: git
+        state: present
+
+    - name: Cloner le dépôt depuis GitHub
       git:
         repo: 'https://github.com/Fologix/Voting-app.git'
-        dest: /home/
-        version: main  
+        dest: /app
+        version: main
 
-    - name: Install dependencies from requirements.txt
+    - name: Installer les dépendances Python
       pip:
-        requirements: /voting-app/requirements.txt
+        name:
+          - requests
+          - redis
+          - flask
+
+    # Ajoutez d'autres tâches ici si nécessaire, comme la configuration de l'environnement,
+    # la mise en place de services ou de bases de données, etc.
+
 
