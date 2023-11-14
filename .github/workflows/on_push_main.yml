@@ -33,11 +33,11 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}
 
-      - name: Docker Scout
-        id: docker-scout
-        uses: docker/scout-action@v1
-        with:
-          command: recommendations
-          image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}
-          write-comment: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+#      - name: Docker Scout
+#        id: docker-scout
+ #       uses: docker/scout-action@v1
+  #      with:
+   #       command: recommendations
+    #      image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}
+     #     write-comment: true
+      #    github-token: ${{ secrets.GITHUB_TOKEN }}
