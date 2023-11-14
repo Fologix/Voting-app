@@ -44,6 +44,7 @@ jobs:
           curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
           sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
           sudo apt-get update && sudo apt-get install packer
+
       - name: Initialize Packer
         run: packer init packer.pkr.hcl
   
@@ -57,7 +58,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Push image to Docker Hub
-        run: docker push fologix/voting-app:tagname
+        run: docker push fologix/voting-app
           
   deploy-and-test:
     runs-on: ubuntu-latest
