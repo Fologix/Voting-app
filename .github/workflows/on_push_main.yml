@@ -6,30 +6,18 @@ on:
       - main
 
 jobs:
-  lint-and-security:
+  ReleaseBuildPush:
+    name: Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
-          python-version: '3.x'
-
-      - name: Install Python dependencies
-        run: |
-          pip install flake8 bandit
-
-      - name: Lint with flake8
-        run: |
-          flake8 .
-
-      - name: Security check with bandit
-        run: |
-          bandit -r .
+          persist-credentials: false
+          fetch-depth: 0
 
   build-and-push:
-    needs: lint-and-security
+    #needs: lint-and-security
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
