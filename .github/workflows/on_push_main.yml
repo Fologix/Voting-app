@@ -58,7 +58,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Push image to Docker Hub
-        run: docker push fologix/voting-app
+        run: docker pull fologix/voting-app:latest
           
   deploy-and-test:
     runs-on: ubuntu-latest
