@@ -7,10 +7,10 @@
     - name: Clone the voting app source code from GitHub
       git:
         repo: 'https://github.com/Fologix/Voting-app.git'
-        dest: C:\wamp\www\Voting-app
+        dest: /app
         version: main  
 
     - name: Install dependencies from requirements.txt
       pip:
-        requirements: /path/to/remote/voting-app/requirements.txt
+        requirements: /voting-app/requirements.txt
 
