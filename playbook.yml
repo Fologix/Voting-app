@@ -1,11 +1,16 @@
----
 - name: Déploiement de l'application voting-app
-  hosts: vos_serveurs
+  hosts: localhost
   become: yes
 
   tasks:
-    - name: Assurer que Python est installé (bootstrap Python)
-      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+    - name: Assurer que Python 3 est installé (bootstrap Python)
+      raw: test -e /usr/bin/python3 || (apt -y update && apt install -y python3-minimal)
+
+    - name: Installer pip pour Python 3
+      apt:
+        name: python3-pip
+        update_cache: yes
+        state: present
 
     - name: Assurer que Git est installé
       apt:
@@ -24,8 +29,3 @@
           - requests
           - redis
           - flask
-
-    # Ajoutez d'autres tâches ici si nécessaire, comme la configuration de l'environnement,
-    # la mise en place de services ou de bases de données, etc.
-
-
