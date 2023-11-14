@@ -60,9 +60,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Push image to Docker Hub
-        run: |
-          Packer should output the name:tag format
-          docker push voting-app:tag
+        run: docker fologix/voting-app:tagname
           
   deploy-and-test:
     runs-on: ubuntu-latest
