@@ -75,7 +75,8 @@ jobs:
       run: pip install pytest flask
 
     - name: Exécuter les tests unitaires
-      run: ./pytest.py 
+      run: python pytest.py
+      working-directory: ./
 
     - name: Nettoyage
       run: docker-compose down
