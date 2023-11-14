@@ -1,0 +1,16 @@
+- hosts: servers
+  become: yes
+  tasks:
+    - name: Install python for Ansible
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+
+    - name: Clone the voting app source code from GitHub
+      git:
+        repo: 'https://github.com/Fologix/Voting-app.git'
+        dest: C:\wamp\www\Voting-app
+        version: main  
+
+    - name: Install dependencies from requirements.txt
+      pip:
+        requirements: /path/to/remote/voting-app/requirements.txt
+
